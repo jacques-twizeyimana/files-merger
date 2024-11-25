@@ -8,12 +8,14 @@ import { Input } from "@/components/ui/input";
 import Papa from "papaparse";
 import DataTable from "@/components/DataTable";
 import { useToast } from "@/hooks/use-toast";
+import { MergedData } from "@/types";
 
 type Request = {
   "Reference Number": string;
   Surnames: string;
   ForeName: string;
   "NID Number": string;
+  "Phone Number": string;
   "Approval Status": string;
 };
 
@@ -21,15 +23,6 @@ type Order = {
   NationalID: string;
   BillID: string;
   Status: string;
-};
-
-type MergedData = {
-  refNo: string;
-  fullName: string;
-  nid: string;
-  approvalStatus: string;
-  billNumber: string;
-  orderStatus: string;
 };
 
 export default function Home() {
@@ -61,8 +54,9 @@ export default function Home() {
           refNo: req["Reference Number"] || "N/A",
           fullName: `${req.Surnames || ""} ${req.ForeName || ""}`.trim(),
           nid: req["NID Number"] || "N/A",
+          phoneNumber: req["Phone Number"] || "N/A",
           approvalStatus: req["Approval Status"] || "N/A",
-          billNumber: matchingOrder?.BillID || "N/A",
+          billNumber: matchingOrder?.BillID || "-",
           orderStatus: matchingOrder?.Status || "N/A",
         };
       });

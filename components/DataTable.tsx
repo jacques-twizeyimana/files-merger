@@ -6,15 +6,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-
-type MergedData = {
-  refNo: string;
-  fullName: string;
-  nid: string;
-  approvalStatus: string;
-  billNumber: string;
-  orderStatus: string;
-};
+import { MergedData } from "@/types";
 
 export default function DataTable({ data }: { data: MergedData[] }) {
   return (
@@ -25,6 +17,7 @@ export default function DataTable({ data }: { data: MergedData[] }) {
             <TableHead>Reference No</TableHead>
             <TableHead>Full Name</TableHead>
             <TableHead>National ID</TableHead>
+            <TableHead>Phone Number</TableHead>
             <TableHead>Approval Status</TableHead>
             <TableHead>Bill Number</TableHead>
             <TableHead>Order Status</TableHead>
@@ -36,6 +29,7 @@ export default function DataTable({ data }: { data: MergedData[] }) {
               <TableCell className="font-medium">{row.refNo}</TableCell>
               <TableCell>{row.fullName}</TableCell>
               <TableCell>{row.nid}</TableCell>
+              <TableCell>{row.phoneNumber}</TableCell>
               <TableCell>
                 <span
                   className={`px-2 py-1 rounded-full text-xs font-semibold ${
